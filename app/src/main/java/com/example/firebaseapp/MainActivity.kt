@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.firebaseapp.databinding.ActivityMainBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -18,9 +21,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+
         // Initialize Firebase Auth
         auth = Firebase.auth
-
+        var googleSignInClient = GoogleSignIn.getClient(this, GoogleSignInOptions.DEFAULT_SIGN_IN)
         binding.loginBtn.setOnClickListener {
             auth.createUserWithEmailAndPassword(
                 binding.emailEtxt.text.toString(), binding.passwordEtxt.text.toString()
@@ -39,6 +43,11 @@ class MainActivity : AppCompatActivity() {
 
                 }
             }
+        }
+
+        binding.googleBtn.setOnClickListener {
+            val signInClient = googleSignInClient.signInIntent
+            startActivity(signInClient)
         }
     }
 }
