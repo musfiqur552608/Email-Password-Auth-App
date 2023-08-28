@@ -13,8 +13,8 @@
         android:theme="@style/Theme.FirebaseApp"
         tools:targetApi="31">
         <activity
-            android:name=".PhotoUploadActivity"
-            android:exported="true" >
+            android:name=".VideoActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,13 +22,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".PhotoUploadActivity"
+            android:exported="true">
+        </activity>
+        <activity
             android:name=".SignOutActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"
